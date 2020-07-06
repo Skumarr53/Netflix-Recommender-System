@@ -42,7 +42,7 @@ Basic features like Global average of all movie ratings, Average rating per user
 ### 1. Baseline  
 __Predicted_rating : ( baseline prediction )__
   
-$\large {\hat{r}_{ui} = b_{ui} =\mu + b_u + b_i}$
+\large {\hat{r}_{ui} = b_{ui} =\mu + b_u + b_i}
 
 
 - $\pmb \mu$ : Average of all ratings in training data.

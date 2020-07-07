@@ -17,7 +17,6 @@
   - [Creator:](#creator)
 
 
-
 ## Overview:
 
 source: https://www.kaggle.com/netflix-inc/netflix-prize-data
@@ -42,25 +41,27 @@ Basic features like Global average of all movie ratings, Average rating per user
 ### 1. Baseline  
 __Predicted_rating : ( baseline prediction )__
   
-\large {\hat{r}_{ui} = b_{ui} =\mu + b_u + b_i}
+![](https://latex.codecogs.com/gif.latex?%5Clarge%20%7B%5Chat%7Br%7D_%7Bui%7D%20%3D%20b_%7Bui%7D%20%3D%5Cmu%20&plus;%20b_u%20&plus;%20b_i%7D)
 
 
-- $\pmb \mu$ : Average of all ratings in training data.
-- $\pmb b_u$ : User bias
-- $\pmb b_i$ : Item bias (movie biases)
+- ![](http://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Cpmb%20%5Cmu) :  Average of all ratings in training data.
+* ![](http://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Cpmb%20b_u) : User bias
+* ![](http://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Cpmb%20b_i) : Item bias (movie biases)
+
+
 
 **Solved using Optimization function (Least Squares Problem)**:
 
-$\large \sum_{r_{ui} \in R_{train}} \left(r_{ui} - (\mu + b_u + b_i)\right)^2 + \lambda \left(b_u^2 + b_i^2 \right).\text {        [mimimize } {b_u, b_i]}$
+![](http://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Csum_%7Br_%7Bui%7D%20%5Cin%20R_%7Btrain%7D%7D%20%5Cleft%28r_%7Bui%7D%20-%20%28%5Cmu%20&plus;%20b_u%20&plus;%20b_i%29%5Cright%29%5E2%20&plus;%20%5Clambda%20%5Cleft%28b_u%5E2%20&plus;%20b_i%5E2%20%5Cright%29.%5Ctext%20%7B%20%5Bmimimize%20%7D%20%7Bb_u%2C%20b_i%5D)
 
 ### 2. KNNBaseline predictor
  **based on User-User and movie-movie similarity**
 
-$\large \hat{r}_{ui} = b_{ui} + \frac{ \sum\limits_{v \in N^k_i(u)} \text{sim}(u, v) \cdot (r_{vi} - b_{vi})} {\sum\limits_{v \in N^k_i(u)} \text{sim}(u, v)}$
+![](http://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Clarge%20%5Chat%7Br%7D_%7Bui%7D%20%3D%20b_%7Bui%7D%20&plus;%20%5Cfrac%7B%20%5Csum%5Climits_%7Bv%20%5Cin%20N%5Ek_i%28u%29%7D%20%5Ctext%7Bsim%7D%28u%2C%20v%29%20%5Ccdot%20%28r_%7Bvi%7D%20-%20b_%7Bvi%7D%29%7D%20%7B%5Csum%5Climits_%7Bv%20%5Cin%20N%5Ek_i%28u%29%7D%20%5Ctext%7Bsim%7D%28u%2C%20v%29%7D)
 
-- $\pmb{b_{ui}}$ -  _Baseline prediction_ of (user,movie) rating
+- ![](http://latex.codecogs.com/png.latex?%5Cfn_cm%20%5Cpmb%7Bb_%7Bui%7D%7D) -  _Baseline prediction_ of (user,movie) rating
 
-- $\pmb {N_i^k (u)}$ - Set of __K similar__ users (neighbours) of __user (u)__ who rated __movie(i)__  
+- ![]( http://latex.codecogs.com/png.latex?%5Cpmb%20%7BN_i%5Ek%20%28u%29%7D) - Set of __K similar__ users (neighbours) of __user (u)__ who rated __movie(i)__  
 
 - _sim (u, v)_ - __Similarity__ between users __u and v__  
     - Generally, it will be cosine similarity or Pearson correlation coefficient. 
@@ -68,34 +69,34 @@ $\large \hat{r}_{ui} = b_{ui} + \frac{ \sum\limits_{v \in N^k_i(u)} \text{sim}(u
 
 __similarly Predicted rating based on Item Item similarity:__
   
-$\large \hat{r}_{ui} = b_{ui} + \frac{ \sum\limits_{j \in N^k_u(i)} \text{sim}(i, j) \cdot (r_{uj} - b_{uj})} {\sum\limits_{j \in N^k_u(j)} \text{sim}(i, j)}$
+![](http://latex.codecogs.com/png.latex?%5Clarge%20%5Chat%7Br%7D_%7Bui%7D%20%3D%20b_%7Bui%7D%20&plus;%20%5Cfrac%7B%20%5Csum%5Climits_%7Bj%20%5Cin%20N%5Ek_u%28i%29%7D%20%5Ctext%7Bsim%7D%28i%2C%20j%29%20%5Ccdot%20%28r_%7Buj%7D%20-%20b_%7Buj%7D%29%7D%20%7B%5Csum%5Climits_%7Bj%20%5Cin%20N%5Ek_u%28j%29%7D%20%5Ctext%7Bsim%7D%28i%2C%20j%29%7D)
 
 ### 3. SVD
 
 __Predicted Rating :__
 
-$\large  \hat r_{ui} = \mu + b_u + b_i + q_i^Tp_u$
+![](http://latex.codecogs.com/png.latex?%5Clarge%20%5Chat%20r_%7Bui%7D%20%3D%20%5Cmu%20&plus;%20b_u%20&plus;%20b_i%20&plus;%20q_i%5ETp_u)
     
-- $\pmb q_i$ - Representation of item(movie) in latent factor space
-- $\pmb p_u$ - Representation of user in new latent factor space
+- ![](http://latex.codecogs.com/png.latex?%5Cpmb%20q_i) - Representation of item(movie) in latent factor space
+- ![](http://latex.codecogs.com/png.latex?%5Cpmb%20p_u) - Representation of user in new latent factor space
 
 __Optimization problem with user item interactions and regularization (to avoid overfitting)__
 
-$\large \sum_{r_{ui} \in R_{train}} \left(r_{ui} - \hat{r}_{ui} \right)^2 + \lambda\left(b_i^2 + b_u^2 + ||q_i||^2 + ||p_u||^2\right)$
+![](http://latex.codecogs.com/png.latex?%5Clarge%20%5Csum_%7Br_%7Bui%7D%20%5Cin%20R_%7Btrain%7D%7D%20%5Cleft%28r_%7Bui%7D%20-%20%5Chat%7Br%7D_%7Bui%7D%20%5Cright%29%5E2%20&plus;%20%5Clambda%5Cleft%28b_i%5E2%20&plus;%20b_u%5E2%20&plus;%20%7C%7Cq_i%7C%7C%5E2%20&plus;%20%7C%7Cp_u%7C%7C%5E2%5Cright%29)
 
 ### 4. SVD++
 
 __Predicted Rating :__
 
-$\large \hat{r}_{ui} = \mu + b_u + b_i + q_i^T\left(p_u + |I_u|^{-\frac{1}{2}} \sum_{j \in I_u}y_j\right)$
+![](http://latex.codecogs.com/png.latex?%5Clarge%20%5Chat%7Br%7D_%7Bui%7D%20%3D%20%5Cmu%20&plus;%20b_u%20&plus;%20b_i%20&plus;%20q_i%5ET%5Cleft%28p_u%20&plus;%20%7CI_u%7C%5E%7B-%5Cfrac%7B1%7D%7B2%7D%7D%20%5Csum_%7Bj%20%5Cin%20I_u%7Dy_j%5Cright%29)
 
-- $\pmb{I_u}$ - the set of all items rated by user u
+- ![](http://latex.codecogs.com/png.latex?%5Cpmb%7BI_u%7D) - the set of all items rated by user u
 
-- $\pmb{y_j}$ - Our new set of item factors that capture implicit ratings.
+- ![](http://latex.codecogs.com/png.latex?%5Cpmb%7By_j%7D) - Our new set of item factors that capture implicit ratings.
    
 __Optimization problem with user item interactions and regularization (to avoid overfitting)__
 
-$\large \sum_{r_{ui} \in R_{train}} \left(r_{ui} - \hat{r}_{ui} \right)^2 + \lambda\left(b_i^2 + b_u^2 + ||q_i||^2 + ||p_u||^2 + ||y_j||^2\right)$ 
+![](http://latex.codecogs.com/png.latex?%5Clarge%20%5Csum_%7Br_%7Bui%7D%20%5Cin%20R_%7Btrain%7D%7D%20%5Cleft%28r_%7Bui%7D%20-%20%5Chat%7Br%7D_%7Bui%7D%20%5Cright%29%5E2%20&plus;%20%5Clambda%5Cleft%28b_i%5E2%20&plus;%20b_u%5E2%20&plus;%20%7C%7Cq_i%7C%7C%5E2%20&plus;%20%7C%7Cp_u%7C%7C%5E2%20&plus;%20%7C%7Cy_j%7C%7C%5E2%5Cright%29)
 
 ## Key aspects
 

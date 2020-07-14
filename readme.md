@@ -1,20 +1,19 @@
 <img target="_blank" src="snapshots/Netflix.png" width=215>
 
-# Netflix Recommendation - Implementation of Prize winner's solution
+* # Netflix Recommendation - Implementation of Prize winner's solution
 
-- [Netflix Recommendation - Implementation of Prize winner's solution](#netflix-recommendation---implementation-of-prize-winners-solution)
-  - [Overview:](#overview)
-  - [Feature Extraction](#feature-extraction)
-    - [1. Baseline](#1-baseline)
-    - [2. KNNBaseline predictor](#2-knnbaseline-predictor)
-    - [3. SVD](#3-svd)
-    - [4. SVD++](#4-svd)
-  - [Key aspects](#key-aspects)
-  - [Best Model](#best-model)
-    - [Feature Importance](#feature-importance)
-  - [Technologies Used:](#technologies-used)
-  - [Credits](#credits)
-  - [Creator:](#creator)
+- [Overview:](#overview)
+- [Feature Extraction](#feature-extraction)
+  - [1. Baseline](#1-baseline)
+  - [2. KNNBaseline predictor](#2-knnbaseline-predictor)
+  - [3. SVD](#3-svd)
+  - [4. SVD++](#4-svd)
+- [Key aspects](#key-aspects)
+- [Best Model](#best-model)
+  - [Feature Importance](#feature-importance)
+- [Technologies Used:](#technologies-used)
+- [Credits](#credits)
+- [Creator:](#creator)
 
 
 ## Overview:
